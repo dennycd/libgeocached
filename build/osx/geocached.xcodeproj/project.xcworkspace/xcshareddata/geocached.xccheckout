@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EF1DB158-9D2A-48A2-A771-3354C2ADFD3A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>geocached</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CE465BDA-68E6-4E7B-9355-FEBECA36F7B4</key>
+		<string>https://github.com/dennycd/geocached.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>build/osx/geocached/geocached.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CE465BDA-68E6-4E7B-9355-FEBECA36F7B4</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dennycd/geocached.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CE465BDA-68E6-4E7B-9355-FEBECA36F7B4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CE465BDA-68E6-4E7B-9355-FEBECA36F7B4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>geocached</string>
+		</dict>
+	</array>
+</dict>
+</plist>

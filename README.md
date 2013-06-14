@@ -1,5 +1,5 @@
-## geocached | a fast and high performance geospatial index and query library in C++
-
+## Geocached 
+A fast and high performance geospatial index and query library in C++
 
 
 

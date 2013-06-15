@@ -2,6 +2,12 @@
 A fast and high performance geospatial index and query library in C++
 
 
+## Dependencies
+
+* Geographiclib <http://geographiclib.sourceforge.net/>
+* libgeohash <https://github.com/lyokato/libgeohash>
+
+
 
 ## Usage
 [TBD]
@@ -13,7 +19,8 @@ A fast and high performance geospatial index and query library in C++
 [TBD]
 
 ## Author 
-Denny C. Dai <dennycd@me.com> or visit <http://dennycd.em>
+Denny C. Dai <dennycd@me.com> or visit <http://dennycd.me>
 
 ## License 
-The MIT License (MIT) <http://opensource.org/licenses/MIT>
+The MIT License (MIT) 
+<http://opensource.org/licenses/MIT>

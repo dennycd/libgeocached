@@ -8,14 +8,28 @@
 
 #include <iostream>
 #include <gtest/gtest.h>
+#include <geohash.h>
+#include <uuid/uuid.h>
+
 #include <cell.hpp>
 #include <matrix.hpp>
-#include <geohash.h>
-
-#include <uuid/uuid.h>
 
 using namespace std;
 using namespace geocached;
+
+
+class DataObject{
+public:
+    
+    DataObject(){
+    }
+    
+    DataObject(string d){
+        data = d;
+    }
+    string data;
+};
+
 
 TEST(UUIDTest, test){
     uuid_t myid;
@@ -27,16 +41,67 @@ TEST(UUIDTest, test){
 
 TEST(Cell, test){
     
-//    Cell<int> mycell("testid", 0,0, );
+    Matrix<DataObject> matrix;
+    
+    
+    //data insertion
+    ObjectID id1 = ObjectIDNew();
+    EXPECT_TRUE(matrix.insert(id1, DataObject("hello"), GCLocationMake(23.23234, -123.34324)));
+    
+    ObjectID id2 = ObjectIDNew();
+    EXPECT_TRUE(matrix.insert(id2, DataObject("world"), GCLocationMake(34.1232, -23.34324)));
+    
+    ObjectID id3 = ObjectIDNew();
+    EXPECT_TRUE(matrix.insert(id3, DataObject("denny"), GCLocationMake(77.2323, 123.34324)));
+
+    //retrieval
+    DataObject obj;
+    EXPECT_TRUE(matrix.retrieve(id1, obj));
+    EXPECT_TRUE(matrix.retrieve(id2, obj));
+    EXPECT_TRUE(matrix.retrieve(id3, obj));
+
+    //trversal
+    matrix.traverse([](string key, DataObject& data){
+       cout << "key - " << key <<  ",  data - " << data.data << endl;
+    });
+
+
+    //location upate
+    EXPECT_TRUE(matrix.update_location(id1, {11.232323, 90.1312})); 
+    EXPECT_TRUE(matrix.update_location(id2, {11.232323, 90.1312}));
+    EXPECT_TRUE(matrix.update_location(id3, {11.232323, 90.1312}));
+
+    matrix.traverse([](string key, DataObject& data){
+        cout << "key - " << key <<  ",  data - " << data.data << endl;
+    });
+    
+    
+    //removal
+    EXPECT_TRUE(matrix.remove(id1)); EXPECT_TRUE(matrix.size()==2);
+    EXPECT_TRUE(matrix.remove(id2)); EXPECT_TRUE(matrix.size()==1);
+    EXPECT_TRUE(matrix.remove(id3)); EXPECT_TRUE(matrix.size()==0);
+
+    matrix.traverse([](string key, DataObject& data){
+        cout << "key - " << key <<  ",  data - " << data.data << endl;
+    });
     
     
 }
 
 
 TEST(GeoHash, test){
-    char *hash = GEOHASH_encode(36.232, -123.324, 22);
+    char *hash = GEOHASH_encode(36.232, -123.324, 8);
     cout << "geohash: " << hash << endl;
     free(hash);
+    
+    {
+        char *hash = GEOHASH_encode(36.232, -123.324, 7);
+        cout << "geohash: " << hash << endl;
+        free(hash);
+        
+    }
+    
+    
 }
 
 TEST(MatrixTest, test){

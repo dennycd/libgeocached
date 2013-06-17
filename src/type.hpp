@@ -11,6 +11,9 @@
 
 #include <cfloat>
 #include <string>
+#include <unordered_map>
+#include <uuid/uuid.h>
+
 
 namespace geocached{
 
@@ -28,11 +31,14 @@ namespace geocached{
     //a minimum degree diference before considering two degree values being equal
     const GCDegree GCDegreeResolution = 0.000001f;
     
-    
     typedef struct _GCLocation{
         GCDegree latitude;
         GCDegree longitude;
     }GCLocation;
+    
+    GCLocation GCLocationMake(const GCDegree& lat, const GCDegree& lon){
+        return {lat, lon};
+    }
     
     /**
       describe a rectangle region using center coordinate
@@ -47,5 +53,17 @@ namespace geocached{
     //geohash datatype
     typedef std::string GCGeoHash;
     
+    
+    typedef std::string ObjectID;
+    ObjectID ObjectIDNew(){
+        uuid_t newid;
+        uuid_generate(newid);
+        uuid_string_t newidStr;
+        uuid_unparse(newid, newidStr);
+        return newidStr;
+    }
+    
+    
+    #define GCHASHMAP std::unordered_map
 }
 #endif

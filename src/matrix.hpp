@@ -78,6 +78,12 @@ namespace geocached{
         GCHASHMAP<Key, CellPtr>  _indexObjCell; //object key to cell index
         
     protected:
+        
+        //query for all active cells (containing objects) within a circle area
+        std::vector<CellPtr> _cellsInCircule(GCLocation center, GCDistance radius){
+            
+        }
+        
 
         //destroy cell if cell contains no object
         void _cleanupCell(CellPtr cell){
@@ -201,11 +207,6 @@ namespace geocached{
     Matrix<Object, Key>::~Matrix(){
         
     }
-    
-    
-    
-    
-    
     
 }
 

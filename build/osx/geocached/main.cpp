@@ -14,6 +14,8 @@
 #include <cell.hpp>
 #include <matrix.hpp>
 
+#include <gctree.hpp>
+
 using namespace std;
 using namespace geocached;
 
@@ -29,6 +31,12 @@ public:
     }
     string data;
 };
+
+
+TEST(GCTree, test){
+    
+    
+}
 
 
 TEST(UUIDTest, test){

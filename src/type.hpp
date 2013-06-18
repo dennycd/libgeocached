@@ -53,6 +53,9 @@ namespace geocached{
     //geohash datatype
     typedef std::string GCGeoHash;
     
+    //binary data for a geohash
+    typedef long GCGeoHashBinary;
+    
     
     typedef std::string ObjectID;
     ObjectID ObjectIDNew(){

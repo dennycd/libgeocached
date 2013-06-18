@@ -14,5 +14,4 @@
 #include <functional>
 #include <unordered_map>
 #include <GeographicLib/Geodesic.hpp>
-
 #endif

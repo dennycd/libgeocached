@@ -33,6 +33,7 @@
 		3E0566A2176BD6E20017EDAD /* geohash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = geohash.h; path = ../../lib/libgeohash/include/geohash.h; sourceTree = "<group>"; };
 		3E0566A3176BD6E20017EDAD /* geohash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = geohash.c; path = ../../lib/libgeohash/src/geohash.c; sourceTree = "<group>"; };
 		3E0566A5176BD9380017EDAD /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
+		3E60B23A177112A000625BB0 /* gctree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gctree.hpp; sourceTree = "<group>"; };
 		3ED8E12B176BBF8B006DB6D4 /* geocached */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = geocached; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED8E12E176BBF8B006DB6D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3ED8E130176BBF8B006DB6D4 /* geocached.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = geocached.1; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 				3E0566A5176BD9380017EDAD /* type.hpp */,
 				3E05669B176BCB160017EDAD /* matrix.hpp */,
 				3E05669C176BCB340017EDAD /* cell.hpp */,
+				3E60B23A177112A000625BB0 /* gctree.hpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -193,6 +195,7 @@
 					/usr/local/include,
 					"$(PROJECT_DIR)/../../src",
 					"$(PROJECT_DIR)/../../lib/libgeohash/include",
+					"$(PROJECT_DIR)/../../lib/rtree/",
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -237,6 +240,7 @@
 					/usr/local/include,
 					"$(PROJECT_DIR)/../../src",
 					"$(PROJECT_DIR)/../../lib/libgeohash/include",
+					"$(PROJECT_DIR)/../../lib/rtree/",
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;

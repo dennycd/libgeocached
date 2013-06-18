@@ -6,7 +6,8 @@ A fast and high performance geospatial index and query library in C++
 
 * Geographiclib <http://geographiclib.sourceforge.net/>
 * libgeohash <https://github.com/lyokato/libgeohash>
-
+* libspatialindex <http://libspatialindex.github.io/>
+* RTree <http://superliminal.com/sources/sources.htm#C%20&%20C++%20Code>
 
 
 ## Usage

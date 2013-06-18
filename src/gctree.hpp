@@ -13,6 +13,22 @@
 
 namespace geocached {
     
+    #define GCNODE_MAX_GEOHASH_BIT 20  //max number of bits used for lat/lng binary value
+
+    /**
+     A single geohash node representing a geo rect area
+     it has maximum 4 childs representing spliting its rect into four parts
+     by adding 1 additional bit to its lat and long
+     
+     **/
+    struct GCNode {
+        
+        
+        
+        int     bits; //number of bits 
+        long    latitude; //latitude geohash
+        long    longitude;//longitude geohash
+    };
     
     
     
@@ -23,16 +39,7 @@ namespace geocached {
     public:
         
         
-        /**
-          A single geohash node representing a geo rect area
-          it has maximu 4 childs representing spliting its rect into four parts
-          by adding 1 additional bit to its lat and long
-         
-         **/
-        struct GCNode {
-            
-        };
-        
+
         
     
     };

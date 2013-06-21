@@ -15,6 +15,7 @@
 #include <matrix.hpp>
 
 #include <gctree.hpp>
+#include <geolib.h>
 
 using namespace std;
 using namespace libgeocached;
@@ -32,6 +33,31 @@ public:
     string data;
 };
 
+TEST(GEOLIB, test){
+    
+    GCLocation loc = GCLocationMake(12.23231, 88.1232);
+    GCRect rect = GCRectMake(-20, 20, 40, 100);
+    GCCircle circle = GCCircleMake( loc, 8000 * 1000);
+    
+    EXPECT_TRUE( GCPointInRect(loc,rect) );
+    EXPECT_TRUE( GCCircleCrossLatitude(circle, 12));
+    EXPECT_TRUE( GCCircleCrossLongitude(circle, 88));
+    
+    
+    EXPECT_TRUE( GCCircleRectOverlap(circle, rect) );
+    
+    GCCircle circle2 = GCCircleMake(GCLocationMake(22, 80), 8000*1000);
+    EXPECT_TRUE( GCCircleRectOverlap(circle2, rect));
+
+    
+    GCCircle circle3 = GCCircleMake(GCLocationMake(45, 80), 80*1000);
+    EXPECT_TRUE(! GCCircleRectOverlap(circle3, rect));
+    
+    
+    
+    cout << GCCircleRectOverlap(circle, "ezs4")  << endl;
+}
+
 
 TEST(GCTree, test){
     
@@ -43,6 +69,10 @@ TEST(GCTree, test){
     EXPECT_TRUE(tree.exists("cbcb"));
     
     tree.traverse(10, [](GCGeoHash hash){
+        cout << "HASH " << hash << endl;
+    });
+
+    tree.traverse(5, [](GCGeoHash hash){
         cout << "HASH " << hash << endl;
     });
     

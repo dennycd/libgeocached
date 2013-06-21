@@ -6,9 +6,12 @@
 //  Copyright (c) 2013 Denny C. Dai. All rights reserved.
 //
 
-#include "gctree.hpp"
+#include <gctree.hpp>
+#include <GeographicLib/Geodesic.hpp>
+#include <geohash.h>
 
 using namespace std;
+using namespace GeographicLib;
 
 namespace libgeocached{
 
@@ -24,6 +27,11 @@ static const char BASE32_DECODE_TABLE[44] = {
     /* S */  24, /* T */  25, /* U */  26, /* V */  27, /* W */  28,
     /* X */  29, /* Y */  30, /* Z */  31
 };
+
+std::vector<GCGeoHash> GCTree::nodes_in_circle(GCDegree center, GCDistance radius){
+    vector<GCGeoHash> rets;
+    return rets;
+}
     
 
 bool GCTree::_recursive_remove(GCNode*& present, const long& lat, const long& lng, const int& bits){
@@ -233,6 +241,7 @@ GCTree::GCTree(){
 
 GCTree::~GCTree(){
     _recursive_cleanup(m_root);
+    delete m_root;
 }
     
 void GCTree::_recursive_cleanup(GCNode*& parent){

@@ -56,32 +56,41 @@ namespace libgeocached {
     class GCTree {
     
     public:
+        //query for all geohash rects fall within the circle
+        std::vector<GCGeoHash> nodes_in_circle(GCDegree center, GCDistance radius);
+        
+    public:
         //given a geohash region in base-32 string representation, insert it into the gc tree
         bool insert(const GCGeoHash& geohash);
         //query if a a given geohash entry exists in tree
         bool exists(const GCGeoHash& geohash);
         //remove a geohash entry
         bool remove(const GCGeoHash& geohash);
-        
+        //iterate over all present geohash at a specific level
         void traverse(int target_bits, TraverseFunc func);
-        
+        //check emptynes
         bool empty()const{ return m_root->empty();}
-        
+        //cleanup
+        void cleanup(){ _recursive_cleanup(m_root); }
     public:
         GCTree();
         virtual ~GCTree();
         
     private:
+        
+        //encode & decode
         void _decode_geohash(const GCGeoHash& geohash, long& lat, long& lng, int& bits) const;
         GCGeoHash _encode_geohash(long lat, long lng, int bits) const;
         
+        //tree operations 
         bool _recursive_remove(GCNode*& present, const long& lat, const long& lng, const int& bits);
         void _recursive_traverse(GCNode* present, TraverseFunc& func, int target_bits);
-        
         GCNode* _recursive_search(GCNode*&present, const long& lat, const long& lng, const int& bits);
         bool _recursive_insert(GCNode*&present, const long& lat, const long& lng, const int& bits);
         void _recursive_cleanup(GCNode*& parent);
-        GCNode* m_root; //root node represent the entire geo range from [-90, 90) and [-180, 180)
+        
+        //root node represent the entire geo range from [-90, 90) and [-180, 180)
+        GCNode* m_root; 
     };
     
     

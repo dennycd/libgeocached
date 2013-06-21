@@ -9,12 +9,22 @@
 #ifndef geocached_gctree_hpp
 #define geocached_gctree_hpp
 
+#include "share.hpp"
 #include "type.hpp"
 
-namespace geocached {
+namespace libgeocached {
     
-    #define GCNODE_MAX_GEOHASH_BIT 20  //max number of bits used for lat/lng binary value
+    #define GCNODE_SUB_REGION_COUNT 4
+    
+    /**
+      default using 20 bits for lat and lng
+      corresponding to 8 character geohash length using base-32 representation
+     **/
+    #define GCNODE_MAX_GEOHASH_BIT 20
+    #define GCNODE_DEFAULT_GEOHASH_LENGTH 8 
 
+    typedef std::function<void(GCGeoHash geohash)> TraverseFunc;
+    
     /**
      A single geohash node representing a geo rect area
      it has maximum 4 childs representing spliting its rect into four parts
@@ -22,12 +32,20 @@ namespace geocached {
      
      **/
     struct GCNode {
+        GCNode* sub[GCNODE_SUB_REGION_COUNT]; //four sub region arranged as 00 (south west), 01 (south east), 10 (north west), 11 (north east) 
+        int     bits; //number of bits for both lat and lng at this level
+        long    latitude; //binary latitude geohash in decimal form (max 64 bit)
+        long    longitude;//binary longitude geohash in decimal form (max 64 bit)
         
+        GCNode(int b, long lat, long lng) : bits(b), latitude(lat), longitude(lng){
+            for(int i=0;i<GCNODE_SUB_REGION_COUNT;i++) sub[i] = NULL;
+        }
         
-        
-        int     bits; //number of bits 
-        long    latitude; //latitude geohash
-        long    longitude;//longitude geohash
+        bool empty(){
+            for(int i=0;i<GCNODE_SUB_REGION_COUNT;i++)
+                if(sub[i]!=NULL) return false;
+            return true;
+        }
     };
     
     
@@ -36,13 +54,37 @@ namespace geocached {
       A geohash tree structure
      **/
     class GCTree {
-    public:
-        
-        
-
-        
     
+    public:
+        //given a geohash region in base-32 string representation, insert it into the gc tree
+        bool insert(const GCGeoHash& geohash);
+        //query if a a given geohash entry exists in tree
+        bool exists(const GCGeoHash& geohash);
+        //remove a geohash entry
+        bool remove(const GCGeoHash& geohash);
+        
+        void traverse(int target_bits, TraverseFunc func);
+        
+        bool empty()const{ return m_root->empty();}
+        
+    public:
+        GCTree();
+        virtual ~GCTree();
+        
+    private:
+        void _decode_geohash(const GCGeoHash& geohash, long& lat, long& lng, int& bits) const;
+        GCGeoHash _encode_geohash(long lat, long lng, int bits) const;
+        
+        bool _recursive_remove(GCNode*& present, const long& lat, const long& lng, const int& bits);
+        void _recursive_traverse(GCNode* present, TraverseFunc& func, int target_bits);
+        
+        GCNode* _recursive_search(GCNode*&present, const long& lat, const long& lng, const int& bits);
+        bool _recursive_insert(GCNode*&present, const long& lat, const long& lng, const int& bits);
+        void _recursive_cleanup(GCNode*& parent);
+        GCNode* m_root; //root node represent the entire geo range from [-90, 90) and [-180, 180)
     };
+    
+    
 }
 
 #endif

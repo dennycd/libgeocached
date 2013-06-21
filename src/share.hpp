@@ -9,6 +9,7 @@
 #ifndef geocached_share_hpp
 #define geocached_share_hpp
 
+#include <cassert>
 #include <string>
 #include <iostream>
 #include <functional>

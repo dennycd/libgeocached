@@ -15,7 +15,7 @@
 #include <uuid/uuid.h>
 
 
-namespace geocached{
+namespace libgeocached{
 
     //geospatial distance in meters
     typedef double GCDistance; 
@@ -36,7 +36,7 @@ namespace geocached{
         GCDegree longitude;
     }GCLocation;
     
-    GCLocation GCLocationMake(const GCDegree& lat, const GCDegree& lon){
+    inline GCLocation GCLocationMake(const GCDegree& lat, const GCDegree& lon){
         return {lat, lon};
     }
     
@@ -58,7 +58,7 @@ namespace geocached{
     
     
     typedef std::string ObjectID;
-    ObjectID ObjectIDNew(){
+    inline ObjectID ObjectIDNew(){
         uuid_t newid;
         uuid_generate(newid);
         uuid_string_t newidStr;

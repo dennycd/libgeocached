@@ -12,7 +12,7 @@
 #include <cell.hpp>
 #include <geohash.h>
 
-namespace geocached{
+namespace libgeocached{
 
     
     //REFERENCE https://en.wikipedia.org/wiki/Geohash

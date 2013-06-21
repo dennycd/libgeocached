@@ -11,6 +11,7 @@
 
 #include <cell.hpp>
 #include <geohash.h>
+#include <gctree.hpp>
 
 namespace libgeocached{
 
@@ -71,8 +72,9 @@ namespace libgeocached{
 
     
     private:
-        CellMap _map; //sparse map holding global cells
+        CellMap _map; //sparse map holding global cells: mapping from geohash to cell
         GCMatrixResolution _resol; //current resolution level
+        GCTree _gctree; //geospatial tree indexing the cells
         
         //internal auxiliary indexing 
         GCHASHMAP<Key, CellPtr>  _indexObjCell; //object key to cell index
@@ -89,8 +91,15 @@ namespace libgeocached{
         void _cleanupCell(CellPtr cell){
             if(!cell) return;
             if(cell->size()==0){
-                std::cout << "CELL REMOVED ==> " << cell->geohash() << std::endl;
-                _map.erase(cell->geohash());
+                GCGeoHash geohash = cell->geohash();
+                std::cout << "CELL REMOVED ==> " << geohash << std::endl;
+
+                //remove from map
+                _map.erase(geohash);
+            
+                //erate record from gctree
+                _gctree.remove(geohash);
+
                 delete cell;
                 cell = NULL;
             }
@@ -110,7 +119,13 @@ namespace libgeocached{
             else{
                 pcell = new Cell<Object,Key>(hashkey);
                 if(!pcell) throw std::exception();
+                
+                //add to hash index
                 _map[hashkey] = pcell;   // O(1) insertion
+                
+                //add to gctree index
+                _gctree.insert(hashkey);
+                
                 std::cout << "CELL CREATED ==> " << hashkey << std::endl;
             }
                 

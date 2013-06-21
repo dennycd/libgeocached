@@ -17,7 +17,7 @@
 #include <gctree.hpp>
 
 using namespace std;
-using namespace geocached;
+using namespace libgeocached;
 
 
 class DataObject{
@@ -35,7 +35,24 @@ public:
 
 TEST(GCTree, test){
     
+    GCTree tree;
+    EXPECT_TRUE(tree.insert("ezs4"));
+    EXPECT_TRUE(tree.insert("cbcb"));
+
+    EXPECT_TRUE(tree.exists("ezs4"));
+    EXPECT_TRUE(tree.exists("cbcb"));
     
+    tree.traverse(10, [](GCGeoHash hash){
+        cout << "HASH " << hash << endl;
+    });
+    
+    EXPECT_TRUE( tree.remove("ezs4"));
+    EXPECT_TRUE(!tree.remove("zzzz"));
+
+    EXPECT_TRUE( tree.remove("cbcb"));
+    EXPECT_TRUE(!tree.remove("cbcb"));
+    
+    EXPECT_TRUE(tree.empty());
 }
 
 

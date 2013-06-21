@@ -18,7 +18,7 @@
  A rectangular geospatial cell indexes all objects fall within it 
 
  **/
-namespace geocached{
+namespace libgeocached{
     //Object - indexed data object type
     template<class Object, class Key = std::string>
     class Cell {

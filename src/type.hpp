@@ -9,6 +9,7 @@
 #ifndef geocached_type_hpp
 #define geocached_type_hpp
 
+#include <cassert>
 #include <cfloat>
 #include <string>
 #include <unordered_map>
@@ -41,14 +42,28 @@ namespace libgeocached{
     }
     
     /**
-      describe a rectangle region using center coordinate
-      and lat/long degree span 
+      describe a rectangle region using four boundary lat/lng lines
      **/
     typedef struct _GCRect{
-        GCLocation center;
-        GCDegree    latSpan;
-        GCDegree    longSpan;
+        GCDegree lat_south;
+        GCDegree lat_north;
+        GCDegree lng_west;
+        GCDegree lng_east;
     }GCRect;
+    
+    inline GCRect GCRectMake(GCDegree latSouth, GCDegree latNorth, GCDegree lngWest, GCDegree lngEast){
+        assert(latSouth <= latNorth && lngWest <= lngEast);
+        return {latSouth, latNorth, lngWest, lngEast};
+    }
+    
+    typedef struct _GCCircle{
+        GCLocation center;
+        GCDistance radius;
+    }GCCircle;
+    
+    inline GCCircle GCCircleMake(const GCLocation& loc, const GCDistance& dis){
+        return {loc,dis};
+    }
     
     //geohash datatype
     typedef std::string GCGeoHash;
@@ -65,6 +80,8 @@ namespace libgeocached{
         uuid_unparse(newid, newidStr);
         return newidStr;
     }
+    
+    
     
     
     #define GCHASHMAP std::unordered_map

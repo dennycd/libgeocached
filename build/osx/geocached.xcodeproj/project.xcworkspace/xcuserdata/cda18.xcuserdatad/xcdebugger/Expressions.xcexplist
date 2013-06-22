@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "libgeocached::GCTree::_recursive_insert(libgeocached::GCNode*&amp;, long const&amp;, long const&amp;, int const&amp;):gctree.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "present-&gt;bits">
+            </PersistentString>
+            <PersistentString
+               value = "present-&gt;latitude">
+            </PersistentString>
+            <PersistentString
+               value = "present-&gt;longitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

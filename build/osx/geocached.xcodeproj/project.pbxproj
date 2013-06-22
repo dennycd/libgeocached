@@ -11,6 +11,7 @@
 		3ED8E12F176BBF8B006DB6D4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8E12E176BBF8B006DB6D4 /* main.cpp */; };
 		3ED8E131176BBF8B006DB6D4 /* geocached.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED8E130176BBF8B006DB6D4 /* geocached.1 */; };
 		3EE671A71774C14A00F3218E /* gctree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A51774C05600F3218E /* gctree.cpp */; };
+		3EE671AA1775044400F3218E /* geolib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A81775044400F3218E /* geolib.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,8 @@
 		3ED8E12E176BBF8B006DB6D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3ED8E130176BBF8B006DB6D4 /* geocached.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = geocached.1; sourceTree = "<group>"; };
 		3EE671A51774C05600F3218E /* gctree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gctree.cpp; sourceTree = "<group>"; };
+		3EE671A81775044400F3218E /* geolib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = geolib.cpp; sourceTree = "<group>"; };
+		3EE671A91775044400F3218E /* geolib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geolib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 				3E05669C176BCB340017EDAD /* cell.hpp */,
 				3E60B23A177112A000625BB0 /* gctree.hpp */,
 				3EE671A51774C05600F3218E /* gctree.cpp */,
+				3EE671A81775044400F3218E /* geolib.cpp */,
+				3EE671A91775044400F3218E /* geolib.h */,
 			);
 			name = src;
 			path = ../../src;
@@ -155,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EE671A71774C14A00F3218E /* gctree.cpp in Sources */,
+				3EE671AA1775044400F3218E /* geolib.cpp in Sources */,
 				3E0566A4176BD7070017EDAD /* geohash.c in Sources */,
 				3ED8E12F176BBF8B006DB6D4 /* main.cpp in Sources */,
 			);
@@ -208,7 +214,10 @@
 					"$(OTHER_CFLAGS)",
 					"-DGTEST_USE_OWN_TR1_TUPLE=1",
 				);
-				OTHER_LDFLAGS = /usr/local/lib/gtest.a;
+				OTHER_LDFLAGS = (
+					"-lGeographic",
+					/usr/local/lib/gtest.a,
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -252,7 +261,10 @@
 					"$(OTHER_CFLAGS)",
 					"-DGTEST_USE_OWN_TR1_TUPLE=1",
 				);
-				OTHER_LDFLAGS = /usr/local/lib/gtest.a;
+				OTHER_LDFLAGS = (
+					"-lGeographic",
+					/usr/local/lib/gtest.a,
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;

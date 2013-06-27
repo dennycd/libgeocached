@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E0566A4176BD7070017EDAD /* geohash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E0566A3176BD6E20017EDAD /* geohash.c */; };
-		3ED8E12F176BBF8B006DB6D4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8E12E176BBF8B006DB6D4 /* main.cpp */; };
 		3ED8E131176BBF8B006DB6D4 /* geocached.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED8E130176BBF8B006DB6D4 /* geocached.1 */; };
 		3EE671A71774C14A00F3218E /* gctree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A51774C05600F3218E /* gctree.cpp */; };
 		3EE671AA1775044400F3218E /* geolib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A81775044400F3218E /* geolib.cpp */; };
+		3EE9EC43177C03F200866AAF /* geohash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9EC41177C03F200866AAF /* geohash.c */; };
+		3EE9EC45177C041800866AAF /* main_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9EC44177C041800866AAF /* main_test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,16 +32,16 @@
 		3E05669B176BCB160017EDAD /* matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = matrix.hpp; sourceTree = "<group>"; };
 		3E05669C176BCB340017EDAD /* cell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cell.hpp; sourceTree = "<group>"; };
 		3E05669D176BCE180017EDAD /* share.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = share.hpp; sourceTree = "<group>"; };
-		3E0566A2176BD6E20017EDAD /* geohash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = geohash.h; path = ../../lib/libgeohash/include/geohash.h; sourceTree = "<group>"; };
-		3E0566A3176BD6E20017EDAD /* geohash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = geohash.c; path = ../../lib/libgeohash/src/geohash.c; sourceTree = "<group>"; };
 		3E0566A5176BD9380017EDAD /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		3E60B23A177112A000625BB0 /* gctree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gctree.hpp; sourceTree = "<group>"; };
 		3ED8E12B176BBF8B006DB6D4 /* geocached */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = geocached; sourceTree = BUILT_PRODUCTS_DIR; };
-		3ED8E12E176BBF8B006DB6D4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3ED8E130176BBF8B006DB6D4 /* geocached.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = geocached.1; sourceTree = "<group>"; };
 		3EE671A51774C05600F3218E /* gctree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gctree.cpp; sourceTree = "<group>"; };
 		3EE671A81775044400F3218E /* geolib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = geolib.cpp; sourceTree = "<group>"; };
 		3EE671A91775044400F3218E /* geolib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geolib.h; sourceTree = "<group>"; };
+		3EE9EC41177C03F200866AAF /* geohash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = geohash.c; path = ../../lib/geohash/geohash.c; sourceTree = "<group>"; };
+		3EE9EC42177C03F200866AAF /* geohash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geohash.h; path = ../../lib/geohash/geohash.h; sourceTree = "<group>"; };
+		3EE9EC44177C041800866AAF /* main_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main_test.cpp; path = ../../../test/main_test.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +74,8 @@
 		3E05669E176BD44E0017EDAD /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				3E0566A2176BD6E20017EDAD /* geohash.h */,
-				3E0566A3176BD6E20017EDAD /* geohash.c */,
+				3EE9EC41177C03F200866AAF /* geohash.c */,
+				3EE9EC42177C03F200866AAF /* geohash.h */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -102,7 +102,7 @@
 		3ED8E12D176BBF8B006DB6D4 /* geocached */ = {
 			isa = PBXGroup;
 			children = (
-				3ED8E12E176BBF8B006DB6D4 /* main.cpp */,
+				3EE9EC44177C041800866AAF /* main_test.cpp */,
 				3ED8E130176BBF8B006DB6D4 /* geocached.1 */,
 			);
 			path = geocached;
@@ -160,9 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EE671A71774C14A00F3218E /* gctree.cpp in Sources */,
+				3EE9EC43177C03F200866AAF /* geohash.c in Sources */,
+				3EE9EC45177C041800866AAF /* main_test.cpp in Sources */,
 				3EE671AA1775044400F3218E /* geolib.cpp in Sources */,
-				3E0566A4176BD7070017EDAD /* geohash.c in Sources */,
-				3ED8E12F176BBF8B006DB6D4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +272,11 @@
 		3ED8E135176BBF8B006DB6D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(PROJECT_DIR)/../../src",
+					"$(PROJECT_DIR)/../../lib/geohash",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -279,6 +284,11 @@
 		3ED8E136176BBF8B006DB6D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(PROJECT_DIR)/../../src",
+					"$(PROJECT_DIR)/../../lib/geohash",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

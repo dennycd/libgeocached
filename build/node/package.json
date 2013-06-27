@@ -1,0 +1,33 @@
+{
+  "name": "geocached",
+  "version": "0.0.1",
+  "description": "A fast in-memory geospatial indexing and query library",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodeunit test",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dennycd/libgeocached.git"
+  },
+  "keywords": [
+    "geo",
+    "location",
+    "spatial",
+    "index",
+    "query",
+    "C++",
+    "geocached",
+    ""
+  ],
+  "author": "Denny C. Dai <dennycd@me.com>",
+  "license": "MIT",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/dennycd/libgeocached/issues"
+  }
+}

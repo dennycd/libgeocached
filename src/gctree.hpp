@@ -9,8 +9,8 @@
 #ifndef geocached_gctree_hpp
 #define geocached_gctree_hpp
 
-#include "share.hpp"
-#include "type.hpp"
+#include <share.hpp>
+#include <type.hpp>
 
 namespace libgeocached {
     
@@ -57,7 +57,7 @@ namespace libgeocached {
     
     public:
         //query for all geohash rects fall within the circle
-        std::vector<GCGeoHash> nodes_in_circle(GCDegree center, GCDistance radius);
+        void nodes_in_circle(GCCircle circle, std::vector<GCGeoHash>& nodes);
         
     public:
         //given a geohash region in base-32 string representation, insert it into the gc tree

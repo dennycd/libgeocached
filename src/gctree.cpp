@@ -9,6 +9,8 @@
 #include <gctree.hpp>
 #include <GeographicLib/Geodesic.hpp>
 #include <geohash.h>
+#include <stack>
+#include <geolib.h>
 
 using namespace std;
 using namespace GeographicLib;
@@ -28,11 +30,36 @@ static const char BASE32_DECODE_TABLE[44] = {
     /* X */  29, /* Y */  30, /* Z */  31
 };
 
-std::vector<GCGeoHash> GCTree::nodes_in_circle(GCDegree center, GCDistance radius){
-    vector<GCGeoHash> rets;
-    return rets;
-}
+/**
+  collect all leafs fall within the circle
+ **/
+void GCTree::nodes_in_circle(GCCircle circle, std::vector<GCGeoHash>& nodes){
     
+    stack<GCNode*> stack; //for recursive descend
+    stack.push(m_root);
+    
+    while (!stack.empty()) {
+        
+        GCNode* node = stack.top();
+        stack.pop();
+        
+        //leaf node
+        if(node != m_root && node->empty())
+            nodes.push_back(_encode_geohash(node->latitude, node->longitude, node->bits));
+        //internal node
+        else{
+            for(int i=0;i<GCNODE_SUB_REGION_COUNT;i++){
+                //ignore if not exist
+                if(!node->sub[i]) continue;
+                
+                //only descend if the sub region overlaps with the circel
+                if(GCCircleRectOverlap(circle, _encode_geohash(node->sub[i]->latitude, node->sub[i]->longitude, node->sub[i]->bits)))
+                    stack.push(node->sub[i]);
+            }
+        }
+    }
+}
+
 
 bool GCTree::_recursive_remove(GCNode*& present, const long& lat, const long& lng, const int& bits){
     if(!present) return false; 

@@ -54,7 +54,7 @@ void GCTree::nodes_in_circle(GCCircle circle, std::vector<GCGeoHash>& nodes){
                 if(!node->sub[i]) continue;
                 
                 //only descend if the sub region overlaps with the circel
-                if(GCCircleRectOverlap(circle, _encode_geohash(node->sub[i]->latitude, node->sub[i]->longitude, node->sub[i]->bits)))
+                if(GCCircleRectOverlap(circle, node->sub[i]->latitude, node->sub[i]->longitude))
                     stack.push(node->sub[i]);
             }
         }

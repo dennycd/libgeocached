@@ -16,6 +16,12 @@ using namespace std;
 
 namespace libgeocached {
     
+    //distance to circle center within the circle radius 
+    bool GCPointInCircle(GCLocation point, GCCircle cirle){
+        double distance; //in meters
+        Geodesic::WGS84.Inverse(point.latitude, point.longitude, cirle.center.latitude, cirle.center.longitude, distance);
+        return distance <= cirle.radius;
+    }
     
     bool GCCircleRectOverlap(GCCircle circle, GCGeoHash geohash)
     {

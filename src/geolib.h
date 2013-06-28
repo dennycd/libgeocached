@@ -16,6 +16,8 @@
  **/
 namespace libgeocached {
     
+//point in circle 
+bool GCPointInCircle(GCLocation point, GCCircle cirle);
     
 //true if a given location lies inside a rect
 bool GCPointInRect(GCLocation point, GCRect rect);

@@ -22,6 +22,13 @@ namespace libgeocached {
         Geodesic::WGS84.Inverse(point.latitude, point.longitude, cirle.center.latitude, cirle.center.longitude, distance);
         return distance <= cirle.radius;
     }
+
+    bool GCCircleRectOverlap(GCCircle circle, GCGeoHashBinary lat, GCGeoHashBinary lng){
+        
+        //translate a binary representation of lat / lng into a rect box
+        
+        return false;
+    }
     
     bool GCCircleRectOverlap(GCCircle circle, GCGeoHash geohash)
     {

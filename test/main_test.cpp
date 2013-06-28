@@ -31,7 +31,27 @@ public:
         data = d;
     }
     string data;
+    
+    
 };
+
+//query for objects within a circular region
+TEST(CircleQuery, test){
+    
+    Matrix<DataObject> matrix;
+
+    //data insertion
+    ObjectID id1 = ObjectIDNew();
+    EXPECT_TRUE(matrix.insert(id1, DataObject("hello"), GCLocationMake(23.23234, -123.34324)));
+    
+    
+    std::vector<DataObject> objs;
+    matrix.objs_in_circle(GCCircleMake(GCLocationMake(23.23234, -123.34324), 1000), objs);
+
+    for(DataObject& obj : objs)
+        cout << obj.data << endl;
+    
+}
 
 TEST(GEOLIB, test){
     
@@ -53,6 +73,12 @@ TEST(GEOLIB, test){
     GCCircle circle3 = GCCircleMake(GCLocationMake(45, 80), 80*1000);
     EXPECT_TRUE(! GCCircleRectOverlap(circle3, rect));
     
+    
+    EXPECT_TRUE(GCPointInCircle(GCLocationMake(12.23123, 88.123434),
+                GCCircleMake(GCLocationMake(12.23123, 88.123434), 1000)));
+    
+    EXPECT_FALSE(GCPointInCircle(GCLocationMake(-12.23123, -88.123434),
+                GCCircleMake(GCLocationMake(12.23123, 88.123434), 1000)) );
     
     
     cout << GCCircleRectOverlap(circle, "ezs4")  << endl;
@@ -158,11 +184,6 @@ TEST(GeoHash, test){
     
     
 }
-
-TEST(MatrixTest, test){
-    EXPECT_TRUE(true);
-}
-
 
 int main(int argc, const char * argv[])
 {

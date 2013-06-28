@@ -12,6 +12,7 @@
 #include <cell.hpp>
 #include <geohash.h>
 #include <gctree.hpp>
+#include <geolib.h>
 
 namespace libgeocached{
 
@@ -35,7 +36,8 @@ namespace libgeocached{
     class Matrix {
         
     public:
-        
+        //query for objects within a circular region
+        void objs_in_circle(GCCircle circle, std::vector<Object>& objs);
         
         
     public:
@@ -76,16 +78,11 @@ namespace libgeocached{
         GCMatrixResolution _resol; //current resolution level
         GCTree _gctree; //geospatial tree indexing the cells
         
-        //internal auxiliary indexing 
+        // auxiliary obj indexing 
         GCHASHMAP<Key, CellPtr>  _indexObjCell; //object key to cell index
+        GCHASHMAP<Key, GCLocation> _indexObjLoc; //object key to geo location
         
     protected:
-        
-        //query for all active cells (containing objects) within a circle area
-        std::vector<CellPtr> _cellsInCircule(GCLocation center, GCDistance radius){
-            
-        }
-        
 
         //destroy cell if cell contains no object
         void _cleanupCell(CellPtr cell){
@@ -134,6 +131,28 @@ namespace libgeocached{
         
     };
     
+    
+    template<class Object, class Key>
+    void Matrix<Object,Key>::objs_in_circle(GCCircle circle, std::vector<Object>& objs){
+    
+        //get all gc cells that overlaps with the circle
+        std::vector<GCGeoHash> geohashes;
+        _gctree.nodes_in_circle(circle, geohashes);
+        
+        //add all objects in all cell, filter out objs not in circle
+        for(GCGeoHash& geohash : geohashes){
+            assert(_map.count(geohash)==1); //consistency check
+            CellPtr cell = _map[geohash];
+            
+            cell->traverse([&](Key key, Object& obj){
+                GCLocation loc = _indexObjLoc[key];
+                if(GCPointInCircle(loc, circle))
+                    objs.push_back(obj);
+            });
+        }
+    }
+    
+    
     template<class Object, class Key>
     bool Matrix<Object, Key>::retrieve(const Key& key, Object& obj){
         if(_indexObjCell.count(key)==0) return false;
@@ -145,7 +164,7 @@ namespace libgeocached{
     template<class Object, class Key>
     bool Matrix<Object, Key>::update_location(const Key& key, const GCLocation& location)
     {
-        if(_indexObjCell.count(key)==0) return false;
+        if(_indexObjCell.count(key)==0 || _indexObjLoc.count(key)==0) return false;
         CellPtr preCell = _indexObjCell[key];
         CellPtr curCell = _cellForLocation(location.latitude, location.longitude);
         
@@ -154,7 +173,10 @@ namespace libgeocached{
             this->remove(key);
             this->insert(key, obj, location); //re-add with new location
         }
-        
+    
+        //update location value
+        _indexObjLoc[key] = location;
+    
         return true;
     }
 
@@ -177,6 +199,7 @@ namespace libgeocached{
             
             //erase object key index
             _indexObjCell.erase(key);
+            _indexObjLoc.erase(key);
             
             //destroy cell if cell contains no object
             _cleanupCell(cell);
@@ -198,6 +221,7 @@ namespace libgeocached{
         CellPtr cell = _cellForLocation(location.latitude, location.longitude);
         if(cell->insert(key, obj)){
             _indexObjCell[key] = cell;
+            _indexObjLoc[key] = location;
             return true;
         }
         else

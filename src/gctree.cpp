@@ -40,6 +40,7 @@ void GCTree::nodes_in_circle(GCCircle circle, std::vector<GCGeoHash>& nodes){
     
     while (!stack.empty()) {
         
+        //the node must have been overlapping with the circle 
         GCNode* node = stack.top();
         stack.pop();
         

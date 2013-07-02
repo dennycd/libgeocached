@@ -23,11 +23,35 @@ namespace libgeocached {
         return distance <= cirle.radius;
     }
 
-    bool GCCircleRectOverlap(GCCircle circle, GCGeoHashBinary lat, GCGeoHashBinary lng){
+    /*! evaluate if a circle overlaps with a rect represented using geohash binary format 
+     
+     
+     */
+    bool GCCircleRectOverlap(GCCircle circle, GCGeoHashBinary lat, GCGeoHashBinary lng, int bits){
         
         //translate a binary representation of lat / lng into a rect box
+        GCRect rect = GCRectMake(GCDegreeLatitudeMin, GCDegreeLatitudeMax, GCDegreeLongitudeMin, GCDegreeLongitudeMax);
         
-        return false;
+        for(int i=bits-1;i>=0;i--){
+            
+            if( ((lat >> i) & 0x01) == 0x01){  //high lat
+                rect.lat_south = (rect.lat_north + rect.lat_south) / 2.0f; 
+            }
+            else{    //low lat
+                rect.lat_north = (rect.lat_north + rect.lat_south) / 2.0f; 
+            }
+            
+            
+            if( ((lng >> i) & 0x01) == 0x01){  //high lng
+                rect.lng_west = (rect.lng_east + rect.lng_west)/2.0f;
+            }
+            else{   //low lng
+                rect.lng_east = (rect.lng_east + rect.lng_west)/2.0f;
+            }
+            
+        }
+        
+        return GCCircleRectOverlap(circle, rect);
     }
     
     bool GCCircleRectOverlap(GCCircle circle, GCGeoHash geohash)

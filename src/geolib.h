@@ -31,7 +31,7 @@ bool GCCircleCrossLongitude(GCCircle circle, GCDegree longitude);
 //check if a circle overlap with a rect / geohash rect
 bool GCCircleRectOverlap(GCCircle circle, GCRect rect);
 bool GCCircleRectOverlap(GCCircle circle, GCGeoHash geohash);
-bool GCCircleRectOverlap(GCCircle circle, GCGeoHashBinary lat, GCGeoHashBinary lng);
+bool GCCircleRectOverlap(GCCircle circle, GCGeoHashBinary lat, GCGeoHashBinary lng, int bits);
 }
 
 #endif /* defined(__geocached__geolib__) */

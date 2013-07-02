@@ -2,8 +2,9 @@
 A fast in-memory geospatial index and query library in C++. The library supports the following
 
 * indexing of arbitray object types with geolocation tag via C++ template
-* efficient [geohash](https://en.wikipedia.org/wiki/Geohash)-based spatial partitioning and search tree impplementation for geospatial query
+* efficient [geohash](https://en.wikipedia.org/wiki/Geohash)-based spatial partitioning and search tree implementation for geospatial query
 * optional persistency support for NoSQL library including [Redis](http://redis.io/) and [MongoDB](http://www.mongodb.org/)
+* cross-platform availability incluing MacOSX, GNU Linux, Node.js and Windows 
 
 
 
@@ -67,18 +68,28 @@ lat lng
 1   1    north half along latitude, east half along longitude
 ```
 
-Thesefore, a given geo cell is partitioned into four sub regions by halfing at the centre line along both latitude and longitude directions. Internal node at tree level K represents a geo rectangle having K bit precision (assuming 0 bit at root node). 
+By going down 1 tree level, the geo cell is partitioned into four sub regions by halfing at the centre line along both latitude and longitude directions. Internal node at tree level k represents a geo rectangle having k bit precision (assuming 0 bit at root node). The leaf node of the tree has the highest bit precision and therefore corresponding to the smallest geo rectangle. Reference to the objects are stored at the leaf nodes.
 
 
+### Runtime Complexity 
+
+For a fixed maximum bit representation, the height of the GCTree is bounded by the number of bits __K__. Therefore inserting an object into the tree is bounded by __O(K)__ .  Deletion via geolocaiton tag also requires finding the leaf node containing the object which is __O(K)__.  
+
+A spatial query on the gctree resembles that of a [R-tree](https://en.wikipedia.org/wiki/R-tree) operation by first locating the minimum bounding rectangle cell encompassing the query region, and then recursively traverse down the sub regions and collect all objects fall within the query area. 
 
 
-## Performance
-[TBD]
+### Performance
+More performance evaluation matrix to come for the next milestone release
 
-## Road Map
-[TBD]
+### Version
+Current:  0.0.1 
 
-## Dependencies
+### Build and Install
+
+platform specific build scripts and projects are available under build folders
+
+
+### References 
 
 * Geographiclib <http://geographiclib.sourceforge.net/>
 * libgeohash <https://github.com/lyokato/libgeohash>
@@ -86,9 +97,9 @@ Thesefore, a given geo cell is partitioned into four sub regions by halfing at t
 * RTree <http://superliminal.com/sources/sources.htm#C%20&%20C++%20Code>
 
 
-## Author 
+### Author 
 Denny C. Dai <dennycd@me.com> or visit <http://dennycd.me>
 
-## License 
+### License 
 The MIT License (MIT) 
 <http://opensource.org/licenses/MIT>

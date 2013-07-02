@@ -47,7 +47,9 @@ TEST(CircleQuery, test){
     
     std::vector<DataObject> objs;
     matrix.objs_in_circle(GCCircleMake(GCLocationMake(23.23234, -123.34324), 1000), objs);
-
+    
+    EXPECT_TRUE(objs.size()==1);
+    
     for(DataObject& obj : objs)
         cout << obj.data << endl;
     

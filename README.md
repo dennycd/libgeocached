@@ -3,7 +3,7 @@ A fast in-memory geospatial index and query library in C++. The library supports
 
 * indexing of arbitray object types with geolocation tag via C++ template
 * efficient [geohash](https://en.wikipedia.org/wiki/Geohash)-based spatial partitioning and search tree implementation for geospatial query
-* optional persistency support for NoSQL library including [Redis](http://redis.io/) and [MongoDB](http://www.mongodb.org/)
+* optional persistency support for NoSQL library including [Redis](http://redis.io/) and [MongoDB](http://www.mongodb.org/)  (in-progress)
 * cross-platform availability incluing MacOSX, GNU Linux, Node.js and Windows 
 
 

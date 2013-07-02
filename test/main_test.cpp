@@ -35,6 +35,18 @@ public:
     
 };
 
+TEST(GeoHashBinary, test){
+    
+    GCCircle circle = GCCircleMake(GCLocationMake(23.23234, -123.34324), 1000);
+    
+    int bits = 15;
+    long lat = 0b101000010000101;
+    long lng = 0b001010000100101;
+    
+    
+    EXPECT_TRUE( GCCircleRectOverlap(circle, lat, lng, bits) );
+}
+
 //query for objects within a circular region
 TEST(CircleQuery, test){
     

@@ -53,10 +53,10 @@ longitude: 0b001010000100101
 represents a rectangle bounding box of the following edge values
 
 ```cpp
-lat_south:	23.2305908203125	23.2305908203125
-lat_north:	23.236083984375	23.236083984375
-lng_west:	-123.343505859375	-123.343505859375
-lng_east:	-123.33251953125	-123.33251953125
+lat_south:	23.2305908203125
+lat_north:	23.236083984375
+lng_west:	-123.343505859375
+lng_east:	-123.33251953125
 ```
 
 Each internal tree node has a branching degree of 4, with each child representing adding an additional lowest bit to its latitude and longitude values

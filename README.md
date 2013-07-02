@@ -42,8 +42,8 @@ for(DataObject& obj : objs)
 ```
 
 
-### GCTree 
-GCTree is an efficient search tree implementation for hierarchical partitioning of geographical space and cell indexing. Each tree node represents a rectangular geo cell with bounding latitude (north,south) and longitude (west,east) edges. It uses a binary representation of the geohash values for both lat and lng. For example, a 15bit precision binary geohash
+### Internal Implementation
+libgeocached uses an efficient search tree implementation called __GCTree__ for hierarchical partitioning of geographical space and object indexing. Each tree node represents a rectangular geo cell with bounding latitude (north,south) and longitude (west,east) edges. It uses a binary representation of the geohash values for both lat and lng. For example, a 15bit precision binary geohash
 ```cpp
 latitude:  0b101000010000101
 longitude: 0b001010000100101

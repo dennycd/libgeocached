@@ -7,12 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E55B5B217879DF200CCAA5E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E55B5B117879DF200CCAA5E /* XCTest.framework */; };
+		3E55B5B817879DF200CCAA5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3E55B5B617879DF200CCAA5E /* InfoPlist.strings */; };
+		3E55B5BA17879DF200CCAA5E /* geocacheTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E55B5B917879DF200CCAA5E /* geocacheTest.m */; };
 		3ED8E131176BBF8B006DB6D4 /* geocached.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3ED8E130176BBF8B006DB6D4 /* geocached.1 */; };
 		3EE671A71774C14A00F3218E /* gctree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A51774C05600F3218E /* gctree.cpp */; };
 		3EE671AA1775044400F3218E /* geolib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE671A81775044400F3218E /* geolib.cpp */; };
 		3EE9EC43177C03F200866AAF /* geohash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9EC41177C03F200866AAF /* geohash.c */; };
 		3EE9EC45177C041800866AAF /* main_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EE9EC44177C041800866AAF /* main_test.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3E55B5BC17879DF200CCAA5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3ED8E123176BBF8B006DB6D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3ED8E12A176BBF8B006DB6D4;
+			remoteInfo = geocached;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3ED8E129176BBF8B006DB6D4 /* CopyFiles */ = {
@@ -33,6 +46,12 @@
 		3E05669C176BCB340017EDAD /* cell.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = cell.hpp; sourceTree = "<group>"; };
 		3E05669D176BCE180017EDAD /* share.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = share.hpp; sourceTree = "<group>"; };
 		3E0566A5176BD9380017EDAD /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
+		3E55B5AF17879DF200CCAA5E /* geocacheTest.xctest */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = geocacheTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E55B5B117879DF200CCAA5E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3E55B5B517879DF200CCAA5E /* geocacheTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "geocacheTest-Info.plist"; sourceTree = "<group>"; };
+		3E55B5B717879DF200CCAA5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3E55B5B917879DF200CCAA5E /* geocacheTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = geocacheTest.m; sourceTree = "<group>"; };
+		3E55B5BB17879DF200CCAA5E /* geocacheTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "geocacheTest-Prefix.pch"; sourceTree = "<group>"; };
 		3E60B23A177112A000625BB0 /* gctree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = gctree.hpp; sourceTree = "<group>"; };
 		3ED8E12B176BBF8B006DB6D4 /* geocached */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = geocached; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ED8E130176BBF8B006DB6D4 /* geocached.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = geocached.1; sourceTree = "<group>"; };
@@ -45,6 +64,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E55B5AC17879DF200CCAA5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E55B5B217879DF200CCAA5E /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ED8E128176BBF8B006DB6D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +107,33 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
+		3E55B5B017879DF200CCAA5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E55B5B117879DF200CCAA5E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3E55B5B317879DF200CCAA5E /* geocacheTest */ = {
+			isa = PBXGroup;
+			children = (
+				3E55B5B917879DF200CCAA5E /* geocacheTest.m */,
+				3E55B5B417879DF200CCAA5E /* Supporting Files */,
+			);
+			path = geocacheTest;
+			sourceTree = "<group>";
+		};
+		3E55B5B417879DF200CCAA5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E55B5B517879DF200CCAA5E /* geocacheTest-Info.plist */,
+				3E55B5B617879DF200CCAA5E /* InfoPlist.strings */,
+				3E55B5BB17879DF200CCAA5E /* geocacheTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3ED8E122176BBF8B006DB6D4 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +141,8 @@
 				3E05669E176BD44E0017EDAD /* lib */,
 				3E05669A176BC3890017EDAD /* src */,
 				3ED8E12D176BBF8B006DB6D4 /* geocached */,
+				3E55B5B317879DF200CCAA5E /* geocacheTest */,
+				3E55B5B017879DF200CCAA5E /* Frameworks */,
 				3ED8E12C176BBF8B006DB6D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				3ED8E12B176BBF8B006DB6D4 /* geocached */,
+				3E55B5AF17879DF200CCAA5E /* geocacheTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +168,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3E55B5AE17879DF200CCAA5E /* geocacheTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E55B5BE17879DF200CCAA5E /* Build configuration list for PBXNativeTarget "geocacheTest" */;
+			buildPhases = (
+				3E55B5AB17879DF200CCAA5E /* Sources */,
+				3E55B5AC17879DF200CCAA5E /* Frameworks */,
+				3E55B5AD17879DF200CCAA5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E55B5BD17879DF200CCAA5E /* PBXTargetDependency */,
+			);
+			name = geocacheTest;
+			productName = geocacheTest;
+			productReference = 3E55B5AF17879DF200CCAA5E /* geocacheTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3ED8E12A176BBF8B006DB6D4 /* geocached */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ED8E134176BBF8B006DB6D4 /* Build configuration list for PBXNativeTarget "geocached" */;
@@ -136,6 +211,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Denny C. Dai";
+				TargetAttributes = {
+					3E55B5AE17879DF200CCAA5E = {
+						TestTargetID = 3ED8E12A176BBF8B006DB6D4;
+					};
+				};
 			};
 			buildConfigurationList = 3ED8E126176BBF8B006DB6D4 /* Build configuration list for PBXProject "geocached" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -150,11 +230,31 @@
 			projectRoot = "";
 			targets = (
 				3ED8E12A176BBF8B006DB6D4 /* geocached */,
+				3E55B5AE17879DF200CCAA5E /* geocacheTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		3E55B5AD17879DF200CCAA5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E55B5B817879DF200CCAA5E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		3E55B5AB17879DF200CCAA5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E55B5BA17879DF200CCAA5E /* geocacheTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3ED8E127176BBF8B006DB6D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,7 +268,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3E55B5BD17879DF200CCAA5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3ED8E12A176BBF8B006DB6D4 /* geocached */;
+			targetProxy = 3E55B5BC17879DF200CCAA5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3E55B5B617879DF200CCAA5E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3E55B5B717879DF200CCAA5E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		3E55B5BF17879DF200CCAA5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "geocacheTest/geocacheTest-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "geocacheTest/geocacheTest-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3E55B5C017879DF200CCAA5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "geocacheTest/geocacheTest-Prefix.pch";
+				INFOPLIST_FILE = "geocacheTest/geocacheTest-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		3ED8E132176BBF8B006DB6D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -296,6 +451,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E55B5BE17879DF200CCAA5E /* Build configuration list for PBXNativeTarget "geocacheTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E55B5BF17879DF200CCAA5E /* Debug */,
+				3E55B5C017879DF200CCAA5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3ED8E126176BBF8B006DB6D4 /* Build configuration list for PBXProject "geocached" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

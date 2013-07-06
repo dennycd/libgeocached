@@ -242,7 +242,7 @@ GEOHASH_get_adjacent(const char* hash, GEOHASH_direction dir)
 
     assert(hash != NULL);
 
-    len  = strlen(hash);
+    len  = (int)strlen(hash);
     last = tolower(hash[len - 1]);
     idx  = dir * 2 + (len % 2);
 
@@ -273,7 +273,7 @@ GEOHASH_get_adjacent(const char* hash, GEOHASH_direction dir)
         return NULL;
     }
     idx = (int)(ptr - neighbor_table);
-    len = strlen(base);
+    len = (int)strlen(base);
     base[len] = BASE32_ENCODE_TABLE[idx];
     return base;
 }

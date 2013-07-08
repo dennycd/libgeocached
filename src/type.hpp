@@ -14,6 +14,7 @@
 #include <string>
 #include <unordered_map>
 #include <uuid/uuid.h>
+#include <vector>
 
 
 namespace libgeocached{
@@ -81,6 +82,20 @@ namespace libgeocached{
         return newidStr;
     }
     
+    /**
+      A line segment with two end points 
+     **/
+    typedef struct _GCSegment {
+        GCLocation p1;
+        GCLocation p2;
+    }GCSegment;
+    
+    /**
+      A convex polygon consists a set of coordinates ordered in clock wise direction
+     **/
+    typedef struct _GCPolygon{
+        std::vector<GCLocation> points;
+    }GCPolygon;
     
     
     

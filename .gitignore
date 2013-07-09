@@ -3,3 +3,4 @@
 *.a
 main_test
 *.xcuserstate
+build

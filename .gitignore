@@ -3,4 +3,5 @@
 *.a
 main_test
 *.xcuserstate
-build
+build/osx/build
+build/node/build
